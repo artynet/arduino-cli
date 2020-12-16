@@ -250,6 +250,18 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../UPGRADING/" title="Upgrading" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -391,13 +403,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-8">
       Command reference
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-8">
         Command reference
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -577,6 +589,54 @@
 
 
   <li class="md-nav__item">
+    <a href="../commands/arduino-cli_config_add/" title="config add" class="md-nav__link">
+      config add
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../commands/arduino-cli_config_delete/" title="config delete" class="md-nav__link">
+      config delete
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../commands/arduino-cli_config_remove/" title="config remove" class="md-nav__link">
+      config remove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../commands/arduino-cli_config_set/" title="config set" class="md-nav__link">
+      config set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../commands/arduino-cli_core/" title="core" class="md-nav__link">
       core
     </a>
@@ -649,8 +709,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../commands/arduino-cli_core_update-index/" title="core update index" class="md-nav__link">
-      core update index
+    <a href="../commands/arduino-cli_core_update-index/" title="core update-index" class="md-nav__link">
+      core update-index
     </a>
   </li>
 
@@ -723,6 +783,18 @@
   <li class="md-nav__item">
     <a href="../commands/arduino-cli_lib_download/" title="lib download" class="md-nav__link">
       lib download
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../commands/arduino-cli_lib_examples/" title="lib examples" class="md-nav__link">
+      lib examples
     </a>
   </li>
 
@@ -829,6 +901,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../commands/arduino-cli_sketch_archive/" title="sketch archive" class="md-nav__link">
+      sketch archive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../commands/arduino-cli_sketch_new/" title="sketch new" class="md-nav__link">
       sketch new
     </a>
@@ -895,13 +979,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
-    <label class="md-nav__link" for="nav-8">
+    <label class="md-nav__link" for="nav-9">
       gRPC reference
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
+      <label class="md-nav__title" for="nav-9">
         gRPC reference
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1279,10 +1363,18 @@ Arduino CLI configuration file.</p>
   <span class="nt">additional_urls</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://arduino.esp8266.com/stable/package_esp8266com_index.json</span>
 </code></pre></div>
+<p>If you have your package indexes locally installed, you can list their file path in the Arduino CLI configuration file.</p>
+<p>For example, to add the NRF52832 core, edit the configuration file and change the <code>board_manager</code> settings as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">board_manager</span><span class="p">:</span>
+  <span class="nt">additional_urls</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://arduino.esp8266.com/stable/package_esp8266com_index.json</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file:///absolute/path/to/your/package_nrf52832_index.json</span>
+</code></pre></div>
 <p>From now on, commands supporting custom cores will automatically use the additional URL from the configuration file:</p>
 <div class="highlight"><pre><span></span><code>$ arduino-cli core update-index
 Updating index: package_index.json downloaded
 Updating index: package_esp8266com_index.json downloaded
+Updating index: package_nrf52832_index.json
 Updating index: package_index.json downloaded
 
 $ arduino-cli core search esp8266
@@ -1295,6 +1387,14 @@ be specified every time and for every command that operates on a 3<sup>rd</sup> 
 Updating index: package_esp8266com_index.json downloaded
 
 $ arduino-cli core search esp8266 --additional-urls https://arduino.esp8266.com/stable/package_esp8266com_index.json
+ID              Version Name
+esp8266:esp8266 <span class="m">2</span>.5.2   esp8266
+</code></pre></div>
+<p>The same applies to the additional package index file provided by file paths:</p>
+<div class="highlight"><pre><span></span><code>$ arduino-cli  core update-index --additional-urls file:///absolute/path/to/your/package_esp8266com_index.json
+Updating index: package_esp8266com_index.json downloaded
+
+$ arduino-cli core search esp8266 --additional-urls file:///absolute/path/to/your/package_esp8266com_index.json
 ID              Version Name
 esp8266:esp8266 <span class="m">2</span>.5.2   esp8266
 </code></pre></div>
@@ -1419,7 +1519,7 @@ daemon_board_list{installationID=&quot;ed6f1f22-1fbe-4b1f-84be-84d035b6369c&quot
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../installation/" title="Installation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../UPGRADING/" title="Upgrading" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1428,7 +1528,7 @@ daemon_board_list{installationID=&quot;ed6f1f22-1fbe-4b1f-84be-84d035b6369c&quot
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Installation
+                Upgrading
               </span>
             </div>
           </a>
